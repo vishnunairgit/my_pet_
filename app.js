@@ -5,13 +5,24 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cannectPetDB=require('./config/Db');
 const cors = require('cors')
+var app = express();
 
 
+
+
+const dotenv = require('dotenv').config();
+if (dotenv.error) {
+  throw dotenv.error
+}
+console.log(process.env.JWT_PASSWORD,"-----jwt password-----");
+
+app.use(cors({ 
+  // origin:['http://localhost:3000','https://bookmycourt-app-4yrm.onrender.com']
+ }))
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/authRouter');
 
-var app = express();
 cannectPetDB()
 
 // view engine setup
@@ -29,12 +40,12 @@ app.use(express.static(path.join(__dirname, 'public')));
     // app.use(cors());
   // 2- Specifying Options in app.use(cors()):
 
-      const corsOptions ={
-        origin:'http://localhost:3000', 
-        credentials:true,            //access-control-allow-credentials:true
-        optionSuccessStatus:200
-      }
-      app.use(cors(corsOptions));
+      // const corsOptions ={
+      //   origin:'http://localhost:3000', 
+      //   credentials:true,            //access-control-allow-credentials:true
+      //   optionSuccessStatus:200
+      // }
+      // app.use(cors(corsOptions));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
