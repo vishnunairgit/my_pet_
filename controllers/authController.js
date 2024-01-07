@@ -106,10 +106,10 @@ const doLogin = async (req, res) => {
     if (user) {
       // Checking password: comparing the database password and user-entered password
       const hashRes = await bcrypt.compare(req.body.password, user.password);
-      console.log(hashRes, "-----password correct--3--");
+      // console.log(hashRes,"-----password correct--3--");
 
       if (hashRes) {
-        console.log("Password correct-----4----");
+        // console.log("Password correct-----4----");
 
         // Generating JWT Token
         const token = jwt.sign(
@@ -123,21 +123,21 @@ const doLogin = async (req, res) => {
           process.env.JWT_PASSWORD,
           { expiresIn: '1d' }
         );
-        console.log(token,'----tocken---- step-5');
+        // console.log(token,'----tocken---- step-5');
 
-        res.status(200).json({ message: "Login successful", token });
+        res.status(200).json({ message:"Login successful", token });
       } else {
-        console.log("Password incorrect------4-----");
+        // console.log("Password incorrect------4-----");
         res.status(200).json({ message: "Invalid user credentials", token: null });
       }
     } else {
       res.status(200).json({ message: "Invalid user credentials", token: null });
     }
   } catch (error) {
-    console.error('Error During Login:', error);
+    // console.error('Error During Login:', error);
     res.status(500).json({ message: 'Internal server error', token: null });
   }
 };
 
 
-module.exports = { doSignUp, doLogin };
+module.exports = { doSignUp, doLogin }
