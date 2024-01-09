@@ -124,8 +124,9 @@ const doLogin = async (req, res) => {
           { expiresIn: '1d' }
         );
         // console.log(token,'----tocken---- step-5');
-
-        res.status(200).json({ message:"Login successful", token });
+        // befour passing / storing user dettails to localStorage we need to hide the password
+        user.password=undefined
+        res.status(200).json({ message:"Login successful", token , user });
       } else {
         // console.log("Password incorrect------4-----");
         res.status(200).json({ message: "Invalid user credentials", token: null });
