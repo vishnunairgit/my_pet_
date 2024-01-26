@@ -1,6 +1,7 @@
 var express = require('express');
-const { doSignUp, doLogin  } = require('../controllers/authController');
 var router = express.Router();
+const { doSignUp, doLogin  } = require('../controllers/authController');
+
 
 
 router.post('/signUp',doSignUp)

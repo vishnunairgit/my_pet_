@@ -8,24 +8,26 @@ const cors = require('cors')
 var app = express();
 
 
-
-
 const dotenv = require('dotenv').config();
 if (dotenv.error) {
   throw dotenv.error
 }
 console.log(process.env.JWT_PASSWORD,"-----jwt password-----");
 
-app.use(cors({ 
-  // origin:['http://localhost:3000','https://bookmycourt-app-4yrm.onrender.com']
- }))
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/authRouter');
+var adminRouter = require('./routes/adminRouter');
+
+
+
 
 cannectPetDB()
 
 // view engine setup
+app.use(cors())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -50,8 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-
-
+app.use('/admin', adminRouter);
 
 
 // catch 404 and forward to error handler
