@@ -72,7 +72,6 @@ const addPetData = async (req, res) => {
             petVideoUpload,
             petPdfUpload,
         }).save();
-
         res.status(201).json({ message: 'Pet data added successfully' });
     } catch (error) {
         console.log(error);
