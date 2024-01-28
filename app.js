@@ -8,6 +8,7 @@ const cors = require('cors')
 var app = express();
 
 
+
 const dotenv = require('dotenv').config();
 if (dotenv.error) {
   throw dotenv.error
@@ -36,6 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 //  to remove cors issues 
   // 1 Using Default Options:
