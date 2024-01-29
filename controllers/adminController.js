@@ -1,33 +1,4 @@
 
-// const PETS = require('../Models/petSchema')
-
-// const addPetData=async (req,res)=>{
-//     try {
-
-//         const {petType, petBreeds, petGender, petName, petDateofbirth, petPrice, petColour} = req.query;
-//         const petThumbUpload=req.file.filename;
-
-//         console.log(req.query,'----pet basic information----');
-//         console.log(req.file.filename,'-----filedata');
-
-//         await PETS({
-//             petType,
-//             petBreeds,
-//             petGender,
-//             petName,
-//             petDateofbirth,
-//             petPrice,
-//             petColour,
-//             petThumbUpload,
-//         }).save();
-//         res.status(201).json({ message: 'Pet data added successfully' });
-
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ message: 'Internal Server Error' });
-//     }
-// }
-// module.exports={addPetData}
 
 const PETS = require('../Models/petSchema');
 
