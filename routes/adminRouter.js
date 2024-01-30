@@ -25,6 +25,7 @@
 var express = require('express');
 const { addPetData } = require('../controllers/adminController');
 const multer = require('multer');
+const { adminAuth } = require('../middlewares/Authorization');
 var router = express.Router();
 
 const fileStorage = multer.diskStorage({
@@ -44,6 +45,6 @@ const upload = multer({ storage: fileStorage }).fields([
     { name: 'PetPdf', maxCount: 1 },
 ]);
 
-router.post('/addPetData', upload, addPetData);
+router.post('/addPetData',adminAuth, upload, addPetData);
 
 module.exports = router;

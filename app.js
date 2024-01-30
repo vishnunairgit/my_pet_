@@ -13,7 +13,7 @@ const dotenv = require('dotenv').config();
 if (dotenv.error) {
   throw dotenv.error
 }
-console.log(process.env.JWT_PASSWORD,"-----jwt password-----");
+console.log(process.env.JWT_PASSWORD, "-----jwt password-----");
 
 
 
