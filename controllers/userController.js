@@ -1,17 +1,61 @@
+const { response } = require("express");
+const PETS = require("../Models/petSchema");
 
-const PETS = require('../Models/petSchema')
-
-
-const getAllDogPetsData=(req,res)=>{
-
-    PETS.find().then((response)=>{
-        res.status(200).json(response)
+// -------------get all pet data--------------------
+const getAllDogPetsData = (req, res) => {
+  PETS.find()
+    .then((response) => {
+      res.status(200).json(response);
     })
-    .catch((Error)=>{
-        res.status(500).json(Error)
-    })
+    .catch((Error) => {
+      res.status(500).json(Error);
+    });
+};
+
+// -------------get single pet data--------------
+
+const getSinglePetData = async (req, res) => {
+  try {
+    const sinlePetResult = await PETS.findOne({ _id: req.query.petId });
+    res.status(200).json(sinlePetResult);
+    //    console.log(sinlePetResult,'-----------sinlePetResult---------');
+  } catch (error) {
+    console.log(error);
+  }
+
+  // PETS.findOne({_id:req.query.petId}).then((response)=>{
+  //     res.status(200).json(response)
+  //     console.log(PETS,'---------PETS-00000000----------');
+  // })
+  // .catch((error)=>{
+  // console.log(error);
+  // })
+};
 
 
-}
 
-module.exports ={getAllDogPetsData}
+const getMyBookingData = async (req, res) => {
+    try {
+
+
+      const myBooking= await PETS.find({petAdoptedBy:req.userId});
+    //   const myBooking = await PETS.aggregate([
+    //     {
+    //       $match: {
+    //         petAdoptedBy: new Object(req.userId),
+    //       },
+    //     },
+    //   ]);
+  
+      res.status(200).json(myBooking);
+    } catch (error) {
+      console.error('Error fetching my booking data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
+  
+  
+
+
+module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData };

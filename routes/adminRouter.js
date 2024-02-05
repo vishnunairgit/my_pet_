@@ -45,6 +45,6 @@ const upload = multer({ storage: fileStorage }).fields([
     { name: 'PetPdf', maxCount: 1 },
 ]);
 
-router.post('/addPetData',adminAuth, upload, addPetData);
+router.post('/addPetData',adminAuth,upload,addPetData);
 
 module.exports = router;

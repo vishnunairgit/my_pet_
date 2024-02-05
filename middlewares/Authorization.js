@@ -30,8 +30,8 @@ const adminAuth=(req,res,next)=>{
        const token =req.headers["authorization"].split(' ')[1]
     //    console.log(token);
         jwt.verify(token,process.env.JWT_PASSWORD, (err, decodedToken) => {
-            // console.log(decodedToken, '-----decodedToken-------');
-            if (decodedToken && decodedToken.role===1) {
+            console.log(decodedToken, '-----decodedToken-------');
+            if (decodedToken && decodedToken.role === 1  ) {
                 req.userId=decodedToken.userId
                 next()
             }else{

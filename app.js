@@ -21,6 +21,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRouter = require('./routes/authRouter');
 var adminRouter = require('./routes/adminRouter');
+var paymentRouter = require('./routes/paymentRouter');
+
+
 
 
 
@@ -55,6 +58,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/admin', adminRouter);
+app.use('/payment', paymentRouter);
 
 
 // catch 404 and forward to error handler

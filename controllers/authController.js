@@ -38,7 +38,10 @@ const doSignUp = async (req, res) => {
 };
 
 const doLogin = async (req, res) => {
-  console.log(req.body, "-----logindata------1--");
+  // console.log(req.body, "-----logindata------1--");
+  // USERS.updateOne({_id:'6592a73ff369e26a561a5d2f'},{$set:{'role':1}}).then((response)=>{
+  //   console.log(response,'---res----');
+  // })
   try {
     const user = await USERS.findOne({ email: req.body.email });
     console.log(user, "-----user----2---");
