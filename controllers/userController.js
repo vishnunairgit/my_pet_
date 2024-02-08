@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 const PETS = require("../Models/petSchema");
 
 // -------------get all pet data--------------------
@@ -6,13 +6,27 @@ const getAllDogPetsData = (req, res) => {
   PETS.find()
     .then((response) => {
       res.status(200).json(response);
+      console.log(response);
+    })
+    .catch((Error) => {
+      res.status(500).json(Error);
+    });
+};
+// --------------------carousal data----------------
+const getAllDogPetsDatacarousal = (req, res) => {
+  PETS.find()
+    .then((response) => {
+      res.status(200).json(response);
+      console.log(response);
     })
     .catch((Error) => {
       res.status(500).json(Error);
     });
 };
 
-// -------------get single pet data--------------
+
+// ------------------------------------------------
+// -------------get single pet data-----getAllDogPetsDatacarousal---------
 
 const getSinglePetData = async (req, res) => {
   try {
@@ -58,4 +72,4 @@ const getMyBookingData = async (req, res) => {
   
 
 
-module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData };
+module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData , getAllDogPetsDatacarousal };
