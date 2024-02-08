@@ -8,21 +8,21 @@ const getAllDogPetsData = (req, res) => {
       res.status(200).json(response);
       console.log(response);
     })
-    .catch((Error) => {
-      res.status(500).json(Error);
+    .catch((err) => {
+      res.status(500).json(err);
     });
 };
 // --------------------carousal data----------------
-const getAllDogPetsDatacarousal = (req, res) => {
-  PETS.find()
-    .then((response) => {
-      res.status(200).json(response);
-      console.log(response);
-    })
-    .catch((Error) => {
-      res.status(500).json(Error);
-    });
-};
+// const getAllDogPetsDatacarousal = (req, res) => {
+//   PETS.find()
+//     .then((response) => {
+//       res.status(200).json(response);
+//       console.log(response);
+//     })
+//     .catch((Error) => {
+//       res.status(500).json(Error);
+//     });
+// };
 
 
 // ------------------------------------------------
@@ -72,4 +72,4 @@ const getMyBookingData = async (req, res) => {
   
 
 
-module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData , getAllDogPetsDatacarousal };
+module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData  };

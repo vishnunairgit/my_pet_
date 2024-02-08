@@ -12,12 +12,14 @@ const userAuth = (req, res, next) => {
                 req.userId = decodedToken.userId
                 next()
             }else{
-                res.status(401).json({message:'unauthorized user 0'})
+                res.status(401).json({message:'unauthorized user '})
             }
         })
 
     } catch (error) {
         console.log(error);
+        res.status(401).json({message:'unauthorized user '})
+
         
     }
 }
@@ -34,13 +36,13 @@ const adminAuth=(req,res,next)=>{
                 req.userId=decodedToken.userId
                 next();
             }else{
-                res.status(401).json({message:'unauthorized user 1'})
+                res.status(401).json({message:'unauthorized user '})
             }
         })
 
     } catch (error) {
         console.log(error);
-        res.status(401).json({message:'unauthorized user 2'})
+        res.status(401).json({message:'unauthorized user '})
         
     }
 }
