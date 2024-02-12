@@ -23,11 +23,6 @@ var authRouter = require('./routes/authRouter');
 var adminRouter = require('./routes/adminRouter');
 var paymentRouter = require('./routes/paymentRouter');
 
-
-
-
-
-
 cannectPetDB()
 
 // view engine setup

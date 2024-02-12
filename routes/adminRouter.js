@@ -1,6 +1,6 @@
 
 var express = require('express');
-const { addPetData } = require('../controllers/adminController');
+const { addPetData, SubmitEditPet, deletePet } = require('../controllers/adminController');
 const multer = require('multer');
 const { adminAuth } = require('../middlewares/Authorization');
 var router = express.Router();
@@ -13,7 +13,7 @@ const fileStorage = multer.diskStorage({
         callback(null, Date.now() + "-" + file.originalname);
     }
 });
-
+ 
 // Define multer upload middleware for handling multiple files
 const upload = multer({ storage: fileStorage }).fields([
     { name: 'PetThumbnail', maxCount: 1 },
@@ -22,6 +22,10 @@ const upload = multer({ storage: fileStorage }).fields([
     { name: 'PetPdf', maxCount: 1 },
 ]);
 
-router.post('/addPetData',adminAuth,upload,addPetData);
+router.post('/addPetData', adminAuth, upload, addPetData);
+router.post('/SubmitEditPet', adminAuth, upload, SubmitEditPet);
+router.post('/deletePet', adminAuth, upload, deletePet);
+
+
 
 module.exports = router;

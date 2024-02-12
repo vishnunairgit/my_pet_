@@ -7,7 +7,7 @@ const userAuth = (req, res, next) => {
        const token = req.headers["authorization"].split(" ")[1];
     //    console.log(token);
         jwt.verify(token, process.env.JWT_PASSWORD, (err, decodedToken) => {
-            console.log(decodedToken, '-----decodedToken-------');
+            // console.log(decodedToken, '-----decodedToken-------');
             if (decodedToken) {
                 req.userId = decodedToken.userId
                 next()
@@ -19,7 +19,6 @@ const userAuth = (req, res, next) => {
     } catch (error) {
         console.log(error);
         res.status(401).json({message:'unauthorized user '})
-
         
     }
 }

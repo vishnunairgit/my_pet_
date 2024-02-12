@@ -1,5 +1,5 @@
 var express = require('express');
-const { getAllDogPetsData , getSinglePetData, getMyBookingData } = require('../controllers/userController');
+const { getAllDogPetsData , getSinglePetData , getMyBookingData } = require('../controllers/userController');
 const { userAuth } = require('../middlewares/Authorization');
 var router = express.Router();
 

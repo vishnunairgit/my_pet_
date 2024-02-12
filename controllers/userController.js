@@ -32,14 +32,14 @@ const getSinglePetData = async (req, res) => {
   try {
     const sinlePetResult = await PETS.findOne({ _id: req.query.petId });
     res.status(200).json(sinlePetResult);
-    //    console.log(sinlePetResult,'-----------sinlePetResult---------');
+      //  console.log(sinlePetResult,'-----------sinlePetResult---------');
   } catch (error) {
     console.log(error);
   }
 
   // PETS.findOne({_id:req.query.petId}).then((response)=>{
   //     res.status(200).json(response)
-  //     console.log(PETS,'---------PETS-00000000----------');
+  //     console.log(response,'---------PETS-00000000----------');
   // })
   // .catch((error)=>{
   // console.log(error);

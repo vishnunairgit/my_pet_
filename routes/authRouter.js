@@ -4,7 +4,6 @@ const { doSignUp, doLogin  } = require('../controllers/authController');
 
 
 
-router.post('/signUp',doSignUp)
 router.post('/Login',doLogin)
 
 
