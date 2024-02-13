@@ -24,7 +24,7 @@ const upload = multer({ storage: fileStorage }).fields([
 
 router.post('/addPetData', adminAuth, upload, addPetData);
 router.post('/SubmitEditPet', adminAuth, upload, SubmitEditPet);
-router.post('/deletePet', adminAuth, upload, deletePet);
+router.delete('/deletePet', adminAuth, upload, deletePet);
 
 
 

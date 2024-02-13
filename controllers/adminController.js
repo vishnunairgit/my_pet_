@@ -95,7 +95,7 @@ const deletePet = async (req, res) => {
     try {
         const { petId } = req.query;
 
-        const deletedPet = await PETS.findByIdAndDelete({petId});
+        const deletedPet = await PETS.findByIdAndDelete(petId);
 
         if (!deletedPet) {
             return res.status(404).json({ error: 'Pet not found' });
