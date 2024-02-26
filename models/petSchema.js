@@ -18,11 +18,11 @@ const petsSchema = mongoose.Schema({
     },
     petName: {
         type: String,
-        required: true,
+        // required: true,
     },
     petDateofbirth: {
         type: Date,
-        required: true,
+        // required: true,
     },
     petPrice: {
         type: Number,
@@ -30,7 +30,7 @@ const petsSchema = mongoose.Schema({
     },
     petColour: {
         type: String,
-        required: true,
+        // required: true,
     },
     petThumbUpload: {
         type: String,

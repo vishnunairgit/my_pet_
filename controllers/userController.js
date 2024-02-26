@@ -2,6 +2,7 @@
 const PETS = require("../Models/petSchema");
 
 // -------------get all pet data--------------------
+
 const getAllDogPetsData = (req, res) => {
   PETS.find()
     .then((response) => {
@@ -12,6 +13,17 @@ const getAllDogPetsData = (req, res) => {
       res.status(500).json(err);
     });
 };
+
+
+
+
+
+
+
+
+
+
+
 // --------------------carousal data----------------
 // const getAllDogPetsDatacarousal = (req, res) => {
 //   PETS.find()
