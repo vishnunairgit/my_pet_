@@ -1,6 +1,6 @@
 // const { response } = require('../app')
 const { token } = require("morgan");
-const USERS = require("../models/userModels");
+const USERS = require("../Models/userModels");
 // password hashing
 const bcrypt = require("bcrypt");
 const saltRounds = 10;

@@ -1,5 +1,6 @@
 // const { response } = require("express");
-const PETS = require("../Models/petSchema");
+
+const PETS = require('../Models/petSchema');
 
 // -------------get all pet data--------------------
 
@@ -13,15 +14,6 @@ const getAllDogPetsData = (req, res) => {
       res.status(500).json(err);
     });
 };
-
-
-
-
-
-
-
-
-
 
 
 // --------------------carousal data----------------
@@ -62,26 +54,65 @@ const getSinglePetData = async (req, res) => {
 
 const getMyBookingData = async (req, res) => {
     try {
-
-
       const myBooking= await PETS.find({petAdoptedBy:req.userId});
-    //   const myBooking = await PETS.aggregate([
-    //     {
-    //       $match: {
-    //         petAdoptedBy: new Object(req.userId),
-    //       },
-    //     },
-    //   ]);
-  
       res.status(200).json(myBooking);
     } catch (error) {
       console.error('Error fetching my booking data:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-  };
+};
+
+// -------------getallcatpet------------------
+// const GetAllPetCat = async (req, res)=> {
+//   try{
+//     const petType= req.query.petType?.toUpperCase();
+
+//     console.log('Received petType:', petType);
+
+//     if (petType !== 'CAT') {
+//       return res.status(400).json({error:'Invalid or missing petType parameter. Only "cat" is allowed.'})
+//     }
+
+//     const getallpetcat = await PETS.find( {petType: 'CAT'} );
+// if (getallpetcat.length === 0) {
+//   return res.status(404).json({ error: 'No pet categories found for the specified petType' });  
+// }
+
+//     res.status(200).json(getallpetcat)
+//     console.log(getallpetcat,'------------getallpetcat------------');
+//   }catch(error) {
+//     console.error('Error fetching pet categories:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });  }
+
+// };
+
+const GetAllPetCat = async (req, res) => {
+  try {
+    const petType = req.query.petType;
+
+    console.log('Received petType:', petType);
+
+    if (petType !== 'cat') {
+      return res.status(400).json({ error: 'Invalid or missing petType parameter. Only "cat" is allowed.' });
+    }
+
+    const getallpetcat = await PETS.find([ petType='CAT']);
+
+    if (getallpetcat.length === 0) {
+      return res.status(404).json({ error: 'No pet categories found for the specified petType' });
+    }
+
+    res.status(200).json(getallpetcat);
+    console.log(getallpetcat, '------------getallpetcat------------');
+  } catch (error) {
+    console.error('Error fetching pet categories:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
   
   
   
 
 
-module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData  };
+module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData , GetAllPetCat };
