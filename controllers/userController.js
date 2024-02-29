@@ -92,11 +92,11 @@ const GetAllPetCat = async (req, res) => {
 
     console.log('Received petType:', petType);
 
-    if (petType !== 'cat') {
+    if (petType !== 'CAT') {
       return res.status(400).json({ error: 'Invalid or missing petType parameter. Only "cat" is allowed.' });
     }
 
-    const getallpetcat = await PETS.find([ petType='CAT']);
+    const getallpetcat = await PETS.find({ petType : 'CAT'});
 
     if (getallpetcat.length === 0) {
       return res.status(404).json({ error: 'No pet categories found for the specified petType' });
@@ -115,4 +115,4 @@ const GetAllPetCat = async (req, res) => {
   
 
 
-module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData , GetAllPetCat };
+module.exports = { getAllDogPetsData, getSinglePetData, getMyBookingData, GetAllPetCat };

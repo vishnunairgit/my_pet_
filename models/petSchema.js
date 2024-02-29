@@ -13,7 +13,6 @@ const petsSchema = mongoose.Schema({
     },
     petGender: {
         type: String,
-        // enum:['MALE','FEMALE'],
         required: true,
     },
     petName: {
