@@ -1,6 +1,7 @@
 // const { response } = require("express");
 
 const PETS = require('../Models/petSchema');
+const GROOMING = require('../models/GroomingSchema')
 
 // -------------get all pet data--------------------
 
@@ -110,6 +111,17 @@ const GetAllPetDog = async (req, res) =>{
   }
 }
 
+const Getgroomdata  = async (req, res)=>{
+
+  try {
+    const Groomingdata = await GROOMING.find() ;
+    res.status(200).json(Groomingdata)
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({message:"internal server error"})
+  }
+}
 
 
-module.exports = { getAllPetsData, getSinglePetData, getMyBookingData, GetAllPetCat, GetAllPetDog };
+
+module.exports = { getAllPetsData, getSinglePetData, getMyBookingData, GetAllPetCat, GetAllPetDog ,Getgroomdata};
