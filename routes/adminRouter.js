@@ -1,6 +1,6 @@
 
 var express = require('express');
-const { addPetData, SubmitEditPet, deletePet } = require('../controllers/adminController');
+const { addPetData, SubmitEditPet, deletePet, addGrooming } = require('../controllers/adminController');
 const multer = require('multer');
 const { adminAuth } = require('../middlewares/Authorization');
 var router = express.Router();
@@ -22,9 +22,16 @@ const upload = multer({ storage: fileStorage }).fields([
     { name: 'PetPdf', maxCount: 1 },
 ]);
 
+
+// grooming section
+
+
 router.post('/addPetData', adminAuth, upload, addPetData);
 router.post('/SubmitEditPet', adminAuth, upload, SubmitEditPet);
 router.delete('/deletePet', adminAuth, upload, deletePet);
+
+router.post('/addGrooming', adminAuth, upload, addGrooming);
+
 
 
 
