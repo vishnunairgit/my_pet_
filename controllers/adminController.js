@@ -1,6 +1,7 @@
 
 
 const PETS = require('../Models/petSchema');
+const GROOMING = require('../models/GroomingSchema')
 // const { response } = require('../app');
 // const { resource } = require('../app');
 
@@ -108,7 +109,39 @@ const deletePet = async (req, res) => {
     }
 };
 
+// pet grooming section
+
+const addGrooming = async (req, res)=>{
+    try {
+        const{
+        petgroomingpackage,
+        GroomingSesssion, 
+        ServiceCharge,
+        Duration,
+    }= req.body;
+
+    console.log(req.body,'-----------eq.query---------');
+
+
+        await GROOMING ({
+            petgroomingpackage,
+            GroomingSesssion, 
+            ServiceCharge,
+            Duration
+        }).save()
+        res.status(200).json({ message:'Pet Grooming data added successfully'});
+        
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:'Internal Server Error'});
+        
+    }
+
+ 
+
+}
 
 
 
-module.exports = { addPetData , SubmitEditPet, deletePet };
+module.exports = { addPetData , SubmitEditPet, deletePet, addGrooming };

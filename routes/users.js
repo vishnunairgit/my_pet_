@@ -1,5 +1,5 @@
 var express = require('express');
-const { getAllPetsData , getSinglePetData , getMyBookingData , GetAllPetCat, GetAllPetDog } = require('../controllers/userController');
+const { getAllPetsData , getSinglePetData , getMyBookingData , GetAllPetCat, GetAllPetDog, Getgroomdata } = require('../controllers/userController');
 const { userAuth } = require('../middlewares/Authorization');
 var router = express.Router();
 
@@ -9,6 +9,7 @@ router.get( '/getSinglePetData', userAuth , getSinglePetData )
 router.get( '/getMyBookingData', userAuth , getMyBookingData )
 router.get( '/GetAllPetCat', userAuth , GetAllPetCat )
 router.get( '/GetAllPetDog', userAuth , GetAllPetDog )
+router.get( '/Getgroomdata', userAuth, Getgroomdata)
 
 
 // GetPetCat
